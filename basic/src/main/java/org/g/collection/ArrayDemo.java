@@ -1,9 +1,6 @@
 package org.g.collection;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class ArrayDemo {
     public void createInline() {
@@ -59,6 +56,7 @@ public class ArrayDemo {
     }
 
     // Can not keep the original order
+    // Return a new array
     public static String[] distinct1(String[] a) {
         if (a == null)
             return null;
@@ -75,10 +73,28 @@ public class ArrayDemo {
     }
 
     // Keep the original order
+    // Return a new array
     public static String[] distinct2(String[] a) {
         if (a == null)
             return null;
 
         return Arrays.stream(a).distinct().toArray(String[]::new);
+    }
+
+    // Keep the original order
+    // Return a new array
+    public static String[] distinct3(String[] a) {
+        if (a == null)
+            return null;
+
+        int l = a.length;
+        Set<String> set = new LinkedHashSet<>(l);
+        for (int i = 0; i < l; i++) {
+            set.add(a[i]);
+        }
+
+        String[] d = new String[set.size()];
+
+        return set.toArray(d);
     }
 }
