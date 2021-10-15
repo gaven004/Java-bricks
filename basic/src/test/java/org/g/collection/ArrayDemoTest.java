@@ -38,4 +38,14 @@ class ArrayDemoTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    void distinct3() {
+        String[] a = new String[]{"c", "d", "b", "a", "b", "a", "b", "a", "b", "c"};
+
+        String[] expected = new String[]{"c", "d", "b", "a"};
+        String[] actual = instance.distinct3(a);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
